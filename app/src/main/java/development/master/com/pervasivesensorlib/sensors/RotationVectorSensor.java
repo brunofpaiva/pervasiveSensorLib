@@ -6,28 +6,34 @@ import android.widget.TextView;
 import development.master.com.pervasivesensorlib.PervasiveSensorAdapter;
 import development.master.com.pervasivesensorlib.SensorCallback;
 
-public class AccelerometerSensor extends PervasiveSensorAdapter {
+public class RotationVectorSensor extends PervasiveSensorAdapter {
 
+    /**
+     * This variable keeps the last value retrieved from sensor.
+     */
     private String mCurrentValues;
 
     /**
-     * TextView value where the received sensor data will be updated to user.
+     * TextView that updates the received sensor data to.
      */
-    private TextView mTextValue;
+    private TextView mTextView;
 
+    /**
+     * Its a callback used to receive the sensor value at main activity.
+     */
     private SensorCallback mCallback;
 
-    public AccelerometerSensor(final TextView textView) {
-        mTextValue = textView;
+    public RotationVectorSensor(final TextView textView) {
+        mTextView = textView;
     }
 
-    public AccelerometerSensor(final SensorCallback callback) {
+    public RotationVectorSensor(final SensorCallback callback) {
         mCallback = callback;
     }
 
     @Override
     public int getSensorType() {
-        return Sensor.TYPE_ACCELEROMETER;
+        return Sensor.TYPE_ROTATION_VECTOR;
     }
 
     @Override
@@ -36,14 +42,15 @@ public class AccelerometerSensor extends PervasiveSensorAdapter {
     }
 
     @Override
-    public void OnAccelerometerSensorChanged(final float[] sensorValues) {
+    public void OnRotationVectorSensorChanged(final float[] sensorValues) {
         final float x = sensorValues[0];
         final float y = sensorValues[1];
         final float z = sensorValues[2];
 
         mCurrentValues = ("X: " + x + "\n" + "Y: " + y + "\n" + "Z: " + z);
+
         if (mCallback != null) {
-            mCallback.onReceiveAccelerometerData(x,y,z);
+            mCallback.onReceiveRotationVectorData(x,y,z);
         }
     }
 }

@@ -7,7 +7,7 @@ public interface SensorCallback {
     void onReceiveGravityData(final float x, final float y, final float z);
     void onReceiveGyroscopeData(final float x, final float y, final float z);
     void onReceiveLightData(final float light);
-    void onReceiveLinearAccelereationData(final float x, final float y, final float z);
+    void onReceiveLinearAccelerationData(final float x, final float y, final float z);
     void onReceiveMagneticFieldData(final float magneticFieldValue);
     void onReceiveOrientationData(final float orientation);
     void onReceivePressureData(final float pressure);

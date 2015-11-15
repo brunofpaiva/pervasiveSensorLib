@@ -36,7 +36,7 @@ public class AmbientTemperatureSensor  extends PervasiveSensorAdapter {
     }
 
     @Override
-    public void OnAmbientTemperatureSensorChanged(float[] sensorValues) {
+    public void OnAmbientTemperatureSensorChanged(final float[] sensorValues) {
         final float temperatureValue = sensorValues[0];
         mCurrentValues = "Ambient Temperature = " + temperatureValue;
         if (mTextView != null) {

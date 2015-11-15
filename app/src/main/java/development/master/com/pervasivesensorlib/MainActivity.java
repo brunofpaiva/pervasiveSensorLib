@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import development.master.com.pervasivesensorlib.sensors.AccelerometerSensor;
 import development.master.com.pervasivesensorlib.sensors.AmbientTemperatureSensor;
+import development.master.com.pervasivesensorlib.sensors.GravitySensor;
 import development.master.com.pervasivesensorlib.sensors.LightSensor;
 import development.master.com.pervasivesensorlib.sensors.ProximitySensor;
 
@@ -31,9 +32,9 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         final TextView tvAccelerometer = (TextView) findViewById(R.id.text_accelerometer);
+        final TextView tvAmbient = (TextView) findViewById(R.id.text_ambient_temp);
         final TextView tvLight = (TextView) findViewById(R.id.text_light);
         final TextView tvProximity  = (TextView) findViewById(R.id.text_proximity);
-        final TextView tvAmbient = (TextView) findViewById(R.id.text_ambient_temp);
 
         psm = new PervasiveSensorManager(this);
 

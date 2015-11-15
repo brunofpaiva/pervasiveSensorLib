@@ -36,7 +36,7 @@ public class LightSensor extends PervasiveSensorAdapter {
     }
 
     @Override
-    public void OnLightSensorChanged(float[] sensorValues) {
+    public void OnLightSensorChanged(final float[] sensorValues) {
         final float lightValue = sensorValues[0];
         mCurrentValues = "Ilumination = " + lightValue;
         if (mTextView != null) {

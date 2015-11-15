@@ -28,7 +28,7 @@ public abstract class SensorCallbackAdapter implements SensorCallback{
     }
 
     @Override
-    public void onReceiveLinearAccelereationData(float x, float y, float z) {
+    public void onReceiveLinearAccelerationData(float x, float y, float z) {
 
     }
 

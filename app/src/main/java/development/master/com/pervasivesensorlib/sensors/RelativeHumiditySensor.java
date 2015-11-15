@@ -6,7 +6,7 @@ import android.widget.TextView;
 import development.master.com.pervasivesensorlib.PervasiveSensorAdapter;
 import development.master.com.pervasivesensorlib.SensorCallback;
 
-public class ProximitySensor extends PervasiveSensorAdapter {
+public class RelativeHumiditySensor extends PervasiveSensorAdapter {
 
     /**
      * This variable keeps the last value retrieved from sensor.
@@ -23,39 +23,31 @@ public class ProximitySensor extends PervasiveSensorAdapter {
      */
     private SensorCallback mCallback;
 
-    public ProximitySensor(final TextView textView) {
+    public RelativeHumiditySensor(final TextView textView) {
         mTextView = textView;
     }
 
-    public ProximitySensor(final SensorCallback callback) {
+    public RelativeHumiditySensor(final SensorCallback callback) {
         mCallback = callback;
     }
 
     @Override
     public int getSensorType() {
-        return Sensor.TYPE_PROXIMITY;
+        return Sensor.TYPE_RELATIVE_HUMIDITY;
     }
 
     @Override
     public String getCurrentValues() {
-        return null;
+        return mCurrentValues;
     }
 
     @Override
-    public void OnProximitySensorChanged(final float[] sensorValues) {
-        final float distance = sensorValues[0];
+    public void OnLinearAccelerationSensorChanged(final float[] sensorValues) {
+        final float relativeHumidity = sensorValues[0];
+
+        mCurrentValues = ("Relative Humidity: " + relativeHumidity);
         if (mCallback != null) {
-            mCallback.onReceiveProximityData(distance == 0);
-        }
-
-        if (distance == 0) {
-            mCurrentValues = "Proximity sensor is Near";
-        } else {
-            mCurrentValues = "Proximity sensor is Far";
-        }
-
-        if (mTextView != null) {
-            mTextView.setText(mCurrentValues);
+            mCallback.onReceiveRelativeHumidityData(relativeHumidity);
         }
     }
 }
