@@ -1,9 +1,13 @@
 package development.master.com.pervasivesensorlib.sensors;
 
 import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.widget.TextView;
 
+import java.lang.reflect.UndeclaredThrowableException;
+
 import development.master.com.pervasivesensorlib.PervasiveSensorAdapter;
+import development.master.com.pervasivesensorlib.PervasiveSensorManager;
 import development.master.com.pervasivesensorlib.SensorCallback;
 
 public class AccelerometerSensor extends PervasiveSensorAdapter {
@@ -21,15 +25,21 @@ public class AccelerometerSensor extends PervasiveSensorAdapter {
     /**
      * Default Constructor.
      */
-    public AccelerometerSensor() {
+    public AccelerometerSensor(final PervasiveSensorManager psManager) {
+        if (null != psManager) {
+            psManager.registerSensor(this, Sensor.TYPE_ACCELEROMETER, SensorManager.SENSOR_DELAY_NORMAL);
+        }
     }
 
     /**
      * Constructor that receives the SensorCallback which will return the sensor value.
      * @param callback
      */
-    public AccelerometerSensor(final SensorCallback callback) {
-        mCallback = callback;
+    public AccelerometerSensor(final PervasiveSensorManager psManager, final SensorCallback callback) {
+        if (null != psManager) {
+            psManager.registerSensor(this, Sensor.TYPE_ACCELEROMETER, SensorManager.SENSOR_DELAY_NORMAL);
+            mCallback = callback;
+        }
     }
 
     @Override

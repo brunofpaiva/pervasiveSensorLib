@@ -1,9 +1,11 @@
 package development.master.com.pervasivesensorlib.sensors;
 
 import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.widget.TextView;
 
 import development.master.com.pervasivesensorlib.PervasiveSensorAdapter;
+import development.master.com.pervasivesensorlib.PervasiveSensorManager;
 import development.master.com.pervasivesensorlib.SensorCallback;
 
 public class LightSensor extends PervasiveSensorAdapter {
@@ -21,11 +23,17 @@ public class LightSensor extends PervasiveSensorAdapter {
     /**
      * Default Constructor.
      */
-    public LightSensor() {
+    public LightSensor(final PervasiveSensorManager psManager) {
+        if (null != psManager) {
+            psManager.registerSensor(this, Sensor.TYPE_LIGHT, SensorManager.SENSOR_DELAY_NORMAL);
+        }
     }
 
-    public LightSensor(final SensorCallback callback) {
-        mCallback = callback;
+    public LightSensor(final PervasiveSensorManager psManager, final SensorCallback callback) {
+        if (null != psManager) {
+            psManager.registerSensor(this, Sensor.TYPE_LIGHT, SensorManager.SENSOR_DELAY_NORMAL);
+            mCallback = callback;
+        }
     }
 
     @Override

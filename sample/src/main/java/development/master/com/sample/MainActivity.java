@@ -1,7 +1,5 @@
 package development.master.com.sample;
 
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -10,6 +8,7 @@ import development.master.com.pervasivesensorlib.PervasiveSensorManager;
 import development.master.com.pervasivesensorlib.SensorCallback;
 import development.master.com.pervasivesensorlib.SensorCallbackAdapter;
 import development.master.com.pervasivesensorlib.sensors.AccelerometerSensor;
+import development.master.com.pervasivesensorlib.sensors.LightSensor;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final TextView text = (TextView) findViewById(R.id.text);
+        final TextView text2 = (TextView) findViewById(R.id.text2);
 
         psManager = new PervasiveSensorManager(this);
 
@@ -29,11 +29,15 @@ public class MainActivity extends AppCompatActivity {
             public void onReceiveAccelerometerData(float x, float y, float z) {
                 text.setText("Acceleration X: " + x + "\nAcceleration Y: " + y + "\nAcceleration Z: " + z);
             }
+
+            @Override
+            public void onReceiveLightData(float light) {
+                text2.setText(""+light);
+            }
         };
 
-        AccelerometerSensor accelerometer = new AccelerometerSensor(sensorCallback);
-        psManager.registerSensor(accelerometer, Sensor.TYPE_ACCELEROMETER,
-                SensorManager.SENSOR_DELAY_NORMAL);
+        new LightSensor(psManager, sensorCallback);
+        new AccelerometerSensor(psManager, sensorCallback);
 
     }
 }
