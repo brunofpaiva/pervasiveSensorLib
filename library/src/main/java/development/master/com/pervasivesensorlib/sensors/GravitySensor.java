@@ -18,13 +18,11 @@ public class GravitySensor extends PervasiveSensorAdapter{
      */
     private SensorCallback mCallback;
 
-    /**
-     * Default Constructor.
-     */
-    public GravitySensor() {
+    public GravitySensor(final SensorCallback callback) {
+        mCallback = callback;
     }
 
-    public GravitySensor(final SensorCallback callback) {
+    public void setCallback(final SensorCallback callback) {
         mCallback = callback;
     }
 

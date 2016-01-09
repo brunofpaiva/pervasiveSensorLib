@@ -18,13 +18,11 @@ public class LinearAccelerationSensor extends PervasiveSensorAdapter {
      */
     private SensorCallback mCallback;
 
-    /**
-     * Default Constructor.
-     */
-    public LinearAccelerationSensor() {
+    public LinearAccelerationSensor(final SensorCallback callback) {
+        mCallback = callback;
     }
 
-    public LinearAccelerationSensor(final SensorCallback callback) {
+    public void setCallback(final SensorCallback callback) {
         mCallback = callback;
     }
 

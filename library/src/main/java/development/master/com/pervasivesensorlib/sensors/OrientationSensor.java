@@ -18,13 +18,11 @@ public class OrientationSensor extends PervasiveSensorAdapter {
      */
     private SensorCallback mCallback;
 
-    /**
-     * Default Constructor.
-     */
-    public OrientationSensor() {
+    public OrientationSensor(final SensorCallback callback) {
+        mCallback = callback;
     }
 
-    public OrientationSensor(final SensorCallback callback) {
+    public void setCallback(final SensorCallback callback) {
         mCallback = callback;
     }
 

@@ -18,19 +18,17 @@ public class AmbientTemperatureSensor extends PervasiveSensorAdapter {
      */
     private SensorCallback mCallback;
 
-    /**
-     * Default Constructor.
-     */
-    public AmbientTemperatureSensor() {
+    public AmbientTemperatureSensor(final SensorCallback callback) {
+        mCallback = callback;
     }
 
-    public AmbientTemperatureSensor(final SensorCallback callback) {
+    public void setCallback(final SensorCallback callback) {
         mCallback = callback;
     }
 
     @Override
     public int getSensorType() {
-        return Sensor.TYPE_LIGHT;
+        return Sensor.TYPE_AMBIENT_TEMPERATURE;
     }
 
     @Override

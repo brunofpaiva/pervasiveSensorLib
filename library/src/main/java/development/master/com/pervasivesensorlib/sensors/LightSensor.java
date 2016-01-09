@@ -23,17 +23,12 @@ public class LightSensor extends PervasiveSensorAdapter {
     /**
      * Default Constructor.
      */
-    public LightSensor(final PervasiveSensorManager psManager) {
-        if (null != psManager) {
-            psManager.registerSensor(this, Sensor.TYPE_LIGHT, SensorManager.SENSOR_DELAY_NORMAL);
-        }
+    public LightSensor(final SensorCallback callback) {
+        mCallback = callback;
     }
 
-    public LightSensor(final PervasiveSensorManager psManager, final SensorCallback callback) {
-        if (null != psManager) {
-            psManager.registerSensor(this, Sensor.TYPE_LIGHT, SensorManager.SENSOR_DELAY_NORMAL);
-            mCallback = callback;
-        }
+    public void setCallback(final SensorCallback callback) {
+        mCallback = callback;
     }
 
     @Override

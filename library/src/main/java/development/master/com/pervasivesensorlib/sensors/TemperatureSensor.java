@@ -18,13 +18,11 @@ public class TemperatureSensor extends PervasiveSensorAdapter {
      */
     private SensorCallback mCallback;
 
-    /**
-     * Default Constructor.
-     */
-    public TemperatureSensor() {
+    public TemperatureSensor(final SensorCallback callback) {
+        mCallback = callback;
     }
 
-    public TemperatureSensor(final SensorCallback callback) {
+    public void setCallback(final SensorCallback callback) {
         mCallback = callback;
     }
 

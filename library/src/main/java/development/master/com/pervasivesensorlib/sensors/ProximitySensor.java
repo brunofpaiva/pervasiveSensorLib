@@ -18,13 +18,11 @@ public class ProximitySensor extends PervasiveSensorAdapter {
      */
     private SensorCallback mCallback;
 
-    /**
-     * Default Constructor.
-     */
-    public ProximitySensor() {
+    public ProximitySensor(final SensorCallback callback) {
+        mCallback = callback;
     }
 
-    public ProximitySensor(final SensorCallback callback) {
+    public void setCallback(final SensorCallback callback) {
         mCallback = callback;
     }
 

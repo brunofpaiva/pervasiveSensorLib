@@ -18,13 +18,11 @@ public class GyroscopeSensor extends PervasiveSensorAdapter {
      */
     private SensorCallback mCallback;
 
-    /**
-     * Default Constructor.
-     */
-    public GyroscopeSensor() {
+    public GyroscopeSensor(final SensorCallback callback) {
+        mCallback = callback;
     }
 
-    public GyroscopeSensor(final SensorCallback callback) {
+    public void setCallback(final SensorCallback callback) {
         mCallback = callback;
     }
 

@@ -23,23 +23,11 @@ public class AccelerometerSensor extends PervasiveSensorAdapter {
     private SensorCallback mCallback;
 
     /**
-     * Default Constructor.
-     */
-    public AccelerometerSensor(final PervasiveSensorManager psManager) {
-        if (null != psManager) {
-            psManager.registerSensor(this, Sensor.TYPE_ACCELEROMETER, SensorManager.SENSOR_DELAY_NORMAL);
-        }
-    }
-
-    /**
      * Constructor that receives the SensorCallback which will return the sensor value.
      * @param callback
      */
-    public AccelerometerSensor(final PervasiveSensorManager psManager, final SensorCallback callback) {
-        if (null != psManager) {
-            psManager.registerSensor(this, Sensor.TYPE_ACCELEROMETER, SensorManager.SENSOR_DELAY_NORMAL);
-            mCallback = callback;
-        }
+    public AccelerometerSensor(final SensorCallback callback) {
+        mCallback = callback;
     }
 
     @Override
@@ -66,5 +54,9 @@ public class AccelerometerSensor extends PervasiveSensorAdapter {
         if (null != mCallback) {
             mCallback.onReceiveAccelerometerData(x,y,z);
         }
+    }
+
+    public boolean hadShaken() {
+        return false;
     }
 }

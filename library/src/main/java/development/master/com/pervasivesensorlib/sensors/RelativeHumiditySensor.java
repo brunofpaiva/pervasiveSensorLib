@@ -18,13 +18,11 @@ public class RelativeHumiditySensor extends PervasiveSensorAdapter {
      */
     private SensorCallback mCallback;
 
-    /**
-     * Default Constructor.
-     */
-    public RelativeHumiditySensor() {
+    public RelativeHumiditySensor(final SensorCallback callback) {
+        mCallback = callback;
     }
 
-    public RelativeHumiditySensor(final SensorCallback callback) {
+    public void setCallback(final SensorCallback callback) {
         mCallback = callback;
     }
 

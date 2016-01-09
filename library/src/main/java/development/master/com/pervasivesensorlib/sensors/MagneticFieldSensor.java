@@ -18,13 +18,11 @@ public class MagneticFieldSensor extends PervasiveSensorAdapter {
      */
     private SensorCallback mCallback;
 
-    /**
-     * Default Constructor.
-     */
-    public MagneticFieldSensor() {
+    public MagneticFieldSensor(final SensorCallback callback) {
+        mCallback = callback;
     }
 
-    public MagneticFieldSensor(final SensorCallback callback) {
+    public void setCallback(final SensorCallback callback) {
         mCallback = callback;
     }
 

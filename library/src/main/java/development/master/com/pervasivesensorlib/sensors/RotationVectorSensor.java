@@ -18,13 +18,11 @@ public class RotationVectorSensor extends PervasiveSensorAdapter {
      */
     private SensorCallback mCallback;
 
-    /**
-     * Default Constructor.
-     */
-    public RotationVectorSensor() {
+    public RotationVectorSensor(final SensorCallback callback) {
+        mCallback = callback;
     }
 
-    public RotationVectorSensor(final SensorCallback callback) {
+    public void setCallback(final SensorCallback callback) {
         mCallback = callback;
     }
 

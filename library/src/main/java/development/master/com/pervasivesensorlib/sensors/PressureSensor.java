@@ -18,13 +18,11 @@ public class PressureSensor extends PervasiveSensorAdapter {
      */
     private SensorCallback mCallback;
 
-    /**
-     * Default Constructor.
-     */
-    public PressureSensor() {
+    public PressureSensor(final SensorCallback callback) {
+        mCallback = callback;
     }
 
-    public PressureSensor(final SensorCallback callback) {
+    public void setCallback(final SensorCallback callback) {
         mCallback = callback;
     }
 
